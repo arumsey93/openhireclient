@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { withRouter } from "react-router-dom";
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
+import { Form, Label, Button, Grid, Header } from "semantic-ui-react";
 
 const Register = props => {
   const email = useRef();
@@ -9,8 +10,8 @@ const Register = props => {
   const password = useRef();
   const firstName = useRef();
   const city = useRef();
+  const state = useRef();
   const verifyPassword = useRef();
-  const address = useRef();
   const phoneNumber = useRef();
   const { register } = useSimpleAuth();
 
@@ -22,8 +23,8 @@ const Register = props => {
       first_name: firstName.current.value,
       last_name: lastName.current.value,
       email: email.current.value,
-      address: address.current.value,
       city: city.current.value,
+      state: state.current.value,
       phone_number: phoneNumber.current.value,
       password: password.current.value
     };
@@ -36,11 +37,13 @@ const Register = props => {
   };
 
   return (
-    <main style={{ textAlign: "center" }}>
-      <form className="form--login" onSubmit={handleRegister}>
-        <h1 className="h3 mb-3 font-weight-normal">Register </h1>
-        <fieldset>
-          <label htmlFor="userName"> Username </label>
+    <main style={{display: 'flex', justifyContent: 'center'}}>
+      <Form className="form--login" onSubmit={handleRegister}>
+        <Grid centered>
+          <Header as='h1' style={{display: 'flex', justifyContent: 'center', paddingBottom: '25px'}}>Register</Header>
+        </Grid>
+        <Form.Field>
+          <Label htmlFor="userName"> Username </Label>
           <input
             ref={userName}
             type="text"
@@ -50,9 +53,9 @@ const Register = props => {
             required
             autoFocus
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="firstName"> First Name </label>
+        </Form.Field>
+        <Form.Field>
+          <Label htmlFor="firstName"> First Name </Label>
           <input
             ref={firstName}
             type="text"
@@ -62,9 +65,9 @@ const Register = props => {
             required
             autoFocus
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="lastName"> Last Name </label>
+        </Form.Field>
+        <Form.Field>
+          <Label htmlFor="lastName"> Last Name </Label>
           <input
             ref={lastName}
             type="text"
@@ -73,9 +76,9 @@ const Register = props => {
             placeholder="Last name"
             required
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputEmail"> Email address </label>
+        </Form.Field>
+        <Form.Field>
+          <Label htmlFor="inputEmail"> Email address </Label>
           <input
             ref={email}
             type="email"
@@ -84,20 +87,9 @@ const Register = props => {
             placeholder="Email address"
             required
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputAddress">Address </label>
-          <input
-            ref={address}
-            type="text"
-            name="address"
-            className="form-control"
-            placeholder="Address"
-            required
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputCity">City </label>
+        </Form.Field>
+        <Form.Field>
+          <Label htmlFor="inputCity"> City </Label>
           <input
             ref={city}
             type="text"
@@ -106,9 +98,20 @@ const Register = props => {
             placeholder="City"
             required
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputPhone">Phone Number </label>
+        </Form.Field>
+        <Form.Field>
+          <Label htmlFor="inputState"> State </Label>
+          <input
+            ref={state}
+            type="text"
+            name="state"
+            className="form-control"
+            placeholder="State"
+            required
+          />
+        </Form.Field>
+        <Form.Field>
+          <Label htmlFor="inputPhone"> Phone Number </Label>
           <input
             ref={phoneNumber}
             type="text"
@@ -117,9 +120,9 @@ const Register = props => {
             placeholder="Phone Number"
             required
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputPassword"> Password </label>
+        </Form.Field>
+        <Form.Field>
+          <Label htmlFor="inputPassword"> Password </Label>
           <input
             ref={password}
             type="password"
@@ -128,9 +131,9 @@ const Register = props => {
             placeholder="Password"
             required
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="verifyPassword"> Verify Password </label>
+        </Form.Field>
+        <Form.Field>
+          <Label htmlFor="verifyPassword"> Verify Password </Label>
           <input
             ref={verifyPassword}
             type="password"
@@ -139,11 +142,11 @@ const Register = props => {
             placeholder="Verify password"
             required
           />
-        </fieldset>
-        <fieldset>
-          <button type="submit">Sign in</button>
-        </fieldset>
-      </form>
+        </Form.Field>
+        <Form.Field style={{display: 'flex', justifyContent: 'center'}}>
+          <Button type="submit">Sign in</Button>
+        </Form.Field>
+      </Form>
     </main>
   );
 };

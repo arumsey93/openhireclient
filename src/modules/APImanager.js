@@ -6,7 +6,6 @@ export default {
             method: "GET",
             headers: {
                 Accept: "application/json",
-                Authorization: `Token ${localStorage.getItem("openhire_token")}`
             }
         }).then(response => response.json())
     },
@@ -16,7 +15,6 @@ export default {
             method: "GET",
             headers: {
                 Accept: "application/json",
-                Authorization: `Token ${localStorage.getItem("openhire_token")}`
             }
         }).then(response => response.json())
     },
