@@ -19,6 +19,7 @@ const useSimpleAuth = () => {
       .then(res => {
         if ("token" in res) {
           localStorage.setItem("openhire_token", res.token);
+          localStorage.setItem("user_id", res.user_id);
           setIsLoggedIn(true);
         }
       });
@@ -37,6 +38,7 @@ const useSimpleAuth = () => {
       .then(res => {
         if ("valid" in res && res.valid && "token" in res) {
           localStorage.setItem("openhire_token", res.token);
+          localStorage.setItem("user_id", res.profile_id);
           setIsLoggedIn(true);
         }
       });
@@ -45,6 +47,7 @@ const useSimpleAuth = () => {
   const logout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("openhire_token");
+    localStorage.removeItem("user_id")
   };
 
   return { isAuthenticated, logout, login, register };
