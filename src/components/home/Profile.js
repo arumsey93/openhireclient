@@ -18,22 +18,22 @@ const Profile = props => {
                             {props.profile.city}, {props.profile.state}
                         </Card.Description>
                         <Card.Content extra style={{display: "flex", justifyContent: "center", paddingTop: "15px"}}>
-                            <a href={`mailto: ${props.profile.user.email}`} target="_blank">
+                            <a href={`mailto: ${props.profile.user.email}`} rel="noopener noreferrer" target="_blank">
                                 <Icon name='envelope open outline'></Icon>
                             </a>
-                            <a href={`${props.profile.linkedin}` } target="_blank">
+                            <a href={`${props.profile.linkedin}` } rel="noopener noreferrer" target="_blank">
                                 <Icon name='linkedin'></Icon>
                             </a>
-                            <a href={`${props.profile.github}`} target="_blank">
+                            <a href={`${props.profile.github}`} rel="noopener noreferrer" target="_blank">
                                 <Icon name='github'></Icon>
                             </a>
-                            <a href={`${props.profile.resume}`} target="_blank">
+                            <a href={`${props.profile.resume}`} rel="noopener noreferrer" target="_blank">
                                 <Icon name='paperclip'></Icon>
                             </a>
-                            <a href={`${props.profile.portfolio}`} target="_blank">
+                            <a href={`${props.profile.portfolio}`} rel="noopener noreferrer" target="_blank">
                                 <Icon name='paper plane'></Icon>
                             </a>
-                            <a href={`${props.profile.codingchallenge}`} target="_blank">
+                            <a href={`${props.profile.codingchallenge}`} rel="noopener noreferrer" target="_blank">
                                 <Icon name='code branch'></Icon>
                             </a>
                         </Card.Content>

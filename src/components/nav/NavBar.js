@@ -21,14 +21,14 @@ const NavBar = props => {
                     <Dropdown.Item as={Link} to="/profiles/create">
                         Create Your Profile
                     </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/viewProfile">
+                    <Dropdown.Item as={Link} to="/profile">
                         View Your Profile
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             <Dropdown item simple text="Jobs">
                 <Dropdown.Menu>
-                    <Dropdown.Item as={Link} to="/findJob">
+                    <Dropdown.Item as={Link} to="/jobs">
                         Search Jobs
                     </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/postJob">

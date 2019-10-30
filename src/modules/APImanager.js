@@ -48,7 +48,7 @@ export default {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(resourceObject)
-        }).then(data => data.json())
+        })
     },
 
     delete(resource) {

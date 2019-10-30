@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import APIManager from "../../modules/APImanager"
 import { Form, Label, Grid, Header, Button } from "semantic-ui-react"
 
-const CreateProfile = props => {
+const EditProfile = props => {
 
   const [profileEdit, setEditFields] = useState ([])
   const city = useRef();
@@ -17,7 +17,7 @@ const CreateProfile = props => {
 
       // this function gets all profile information so it can be displayed in the input fields
       const getProfiles = () => {
-        APIManager.get("profiles", localStorage.getItem("user_id")).then(profile => {
+        APIManager.getAll("profiles").then(profile => {
             setEditFields(profile);
         });
       }
@@ -28,17 +28,17 @@ const CreateProfile = props => {
     e.preventDefault();
 
     const updatedUser = {
-      id: localStorage.getItem("user_id"),
-      user_id: localStorage.getItem("user_id"),
-      first_name: firstName.current.value,
-      last_name: lastName.current.value,
-      city: city.current.value,
-      state: state.current.value,
-      linkedin: linkedin.current.value,
-      github: github.current.value,
-      resume: resume.current.value,
-      portfolio: portfolio.current.value,
-      codingchallenge: codingchallenge.current.value
+        id: localStorage.getItem("user_id"),
+        user_id: localStorage.getItem("user_id"),
+        first_name: firstName.current.value,
+        last_name: lastName.current.value,
+        city: city.current.value,
+        state: state.current.value,
+        linkedin: linkedin.current.value,
+        github: github.current.value,
+        resume: resume.current.value,
+        portfolio: portfolio.current.value,
+        codingchallenge: codingchallenge.current.value
     };
 
 
@@ -58,13 +58,13 @@ const CreateProfile = props => {
           <Form className="form--login" onSubmit={handleUpdate}>
             <Grid centered>
                 <Header as='h1' style={{paddingBottom: '35px', fontSize: '50px'}}>
-                <u><strong style={{color: 'orange'}}>Create</strong> Your Profile</u>
+                <u><strong style={{color: 'orange'}}>Edit</strong> Your Profile</u>
                 </Header>
             </Grid>
-            {
-            profileEdit.id == localStorage.getItem("user_id") ? 
-            <>
-            <div>
+            {profileEdit.map(profile => {
+            if (profile.id == localStorage.getItem("user_id")) {
+            return (
+              <div key={profile.id}>
             <Form.Field>
               <Label htmlFor="inputFirstName"> First Name </Label>
               <input
@@ -72,7 +72,7 @@ const CreateProfile = props => {
                 type="text"
                 name="firstName"
                 className="form-control"
-                defaultValue={profileEdit.user.first_name}
+                defaultValue={profile.user.first_name}
                 required
               />
             </Form.Field>
@@ -83,7 +83,7 @@ const CreateProfile = props => {
                 type="text"
                 name="lastName"
                 className="form-control"
-                defaultValue={profileEdit.user.last_name}
+                defaultValue={profile.user.last_name}
                 required
               />
             </Form.Field>
@@ -94,7 +94,7 @@ const CreateProfile = props => {
                 type="text"
                 name="city"
                 className="form-control"
-                defaultValue={profileEdit.city}
+                defaultValue={profile.city}
                 required
               />
             </Form.Field>
@@ -105,7 +105,7 @@ const CreateProfile = props => {
                 type="text"
                 name="state"
                 className="form-control"
-                defaultValue={profileEdit.state}
+                defaultValue={profile.state}
                 required
               />
             </Form.Field>
@@ -116,7 +116,7 @@ const CreateProfile = props => {
                 type="text"
                 name="linkedin"
                 className="form-control"
-                defaultValue={profileEdit.linkedin}
+                defaultValue={profile.linkedin}
                 required
               />
             </Form.Field>
@@ -127,7 +127,7 @@ const CreateProfile = props => {
                 type="text"
                 name="github"
                 className="form-control"
-                defaultValue={profileEdit.github}
+                defaultValue={profile.github}
                 required
               />
             </Form.Field>
@@ -138,7 +138,7 @@ const CreateProfile = props => {
                 type="text"
                 name="resume"
                 className="form-control"
-                defaultValue={profileEdit.resume}
+                defaultValue={profile.resume}
                 required
               />
             </Form.Field>
@@ -149,7 +149,7 @@ const CreateProfile = props => {
                 type="text"
                 name="portfolio"
                 className="form-control"
-                defaultValue={profileEdit.portfolio}
+                defaultValue={profile.portfolio}
                 required
               />
             </Form.Field>
@@ -160,20 +160,21 @@ const CreateProfile = props => {
                 type="text"
                 name="codingchallenge"
                 className="form-control"
-                defaultValue={profileEdit.codingchallenge}
+                defaultValue={profile.codingchallenge}
                 required
               />
             </Form.Field>
             </div>
+              );
+            }
+          })}
             <Form.Field style={{display: 'flex', justifyContent: 'center', paddingTop: '15px'}}>
               <Button type="submit">Submit Profile</Button>
             </Form.Field>
-            </>
-            : "" }
           </Form>
         </main>
       </>
     );
 };
 
-export default CreateProfile;
+export default EditProfile;
