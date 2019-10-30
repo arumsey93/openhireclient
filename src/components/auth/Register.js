@@ -37,10 +37,10 @@ const Register = props => {
   };
 
   return (
-    <main style={{display: 'flex', justifyContent: 'center'}}>
+    <main style={{ textAlign: "center" }}>
       <Form className="form--login" onSubmit={handleRegister}>
         <Grid centered>
-          <Header as='h1' style={{display: 'flex', justifyContent: 'center', paddingBottom: '25px'}}>Register</Header>
+          <Header as='h1' style={{paddingBottom: '25px'}}>Register an Account</Header>
         </Grid>
         <Form.Field>
           <Label htmlFor="userName"> Username </Label>

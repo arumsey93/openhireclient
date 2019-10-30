@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import APIManager from "../../modules/APImanager"
+import { Form, Label, Grid, Header, Button } from "semantic-ui-react"
 
 const CreateProfile = props => {
 
@@ -55,16 +56,18 @@ const CreateProfile = props => {
     return (
         <>
         <main style={{ textAlign: "center" }}>
-          <form className="form--login" onSubmit={handleUpdate}>
-            <h1 className="h3 mb-3 font-weight-normal">
-              Create Your Profile
-            </h1>
-        {profileEdit.map(profile => {
-          if (profile.id == localStorage.getItem("user_id")) {
+          <Form className="form--login" onSubmit={handleUpdate}>
+            <Grid centered>
+                <Header as='h1' style={{paddingBottom: '25px'}}>
+                Create Your Profile
+                </Header>
+            </Grid>
+            {profileEdit.map(profile => {
+            if (profile.id == localStorage.getItem("user_id")) {
             return (
               <div>
-            <fieldset>
-              <label htmlFor="inputFirstName"> First Name </label>
+            <Form.Field>
+              <Label htmlFor="inputFirstName"> First Name </Label>
               <input
                 ref={firstName}
                 type="text"
@@ -73,9 +76,9 @@ const CreateProfile = props => {
                 defaultValue={profile.user.first_name}
                 required
               />
-            </fieldset>
-            <fieldset>
-              <label htmlFor="inputLastName"> Last Name </label>
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputLastName"> Last Name </Label>
               <input
                 ref={lastName}
                 type="text"
@@ -84,9 +87,9 @@ const CreateProfile = props => {
                 defaultValue={profile.user.last_name}
                 required
               />
-            </fieldset>
-            <fieldset>
-              <label htmlFor="inputCity"> City </label>
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputCity"> City </Label>
               <input
                 ref={city}
                 type="text"
@@ -95,9 +98,9 @@ const CreateProfile = props => {
                 defaultValue={profile.city}
                 required
               />
-            </fieldset>
-            <fieldset>
-              <label htmlFor="inputState"> State </label>
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputState"> State </Label>
               <input
                 ref={state}
                 type="text"
@@ -106,9 +109,9 @@ const CreateProfile = props => {
                 defaultValue={profile.state}
                 required
               />
-            </fieldset>
-            <fieldset>
-              <label htmlFor="inputLinkedin"> LinkedIn Link </label>
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputLinkedin"> LinkedIn Link </Label>
               <input
                 ref={linkedin}
                 type="text"
@@ -117,9 +120,9 @@ const CreateProfile = props => {
                 defaultValue={profile.linkedin}
                 required
               />
-            </fieldset>
-            <fieldset>
-              <label htmlFor="inputGithub"> Github Link </label>
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputGithub"> Github Link </Label>
               <input
                 ref={github}
                 type="text"
@@ -128,9 +131,9 @@ const CreateProfile = props => {
                 defaultValue={profile.github}
                 required
               />
-            </fieldset>
-            <fieldset>
-              <label htmlFor="inputResume"> Resume Link </label>
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputResume"> Resume Link </Label>
               <input
                 ref={resume}
                 type="text"
@@ -139,9 +142,9 @@ const CreateProfile = props => {
                 defaultValue={profile.resume}
                 required
               />
-            </fieldset>
-            <fieldset>
-              <label htmlFor="inputPortfolio"> Portfolio Website Link </label>
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputPortfolio"> Portfolio Website Link </Label>
               <input
                 ref={portfolio}
                 type="text"
@@ -150,9 +153,9 @@ const CreateProfile = props => {
                 defaultValue={profile.portfolio}
                 required
               />
-            </fieldset>
-            <fieldset>
-              <label htmlFor="inputCodingChallenge"> Completed Coding Challenge Link </label>
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputCodingChallenge"> Completed Coding Challenge Link </Label>
               <input
                 ref={codingchallenge}
                 type="text"
@@ -161,15 +164,15 @@ const CreateProfile = props => {
                 defaultValue={profile.codingchallenge}
                 required
               />
-            </fieldset>
+            </Form.Field>
             </div>
               );
             }
           })}
-            <fieldset>
-              <button type="submit">Submit Profile</button>
-            </fieldset>
-          </form>
+            <Form.Field style={{display: 'flex', justifyContent: 'center', paddingTop: '15px'}}>
+              <Button type="submit">Submit Profile</Button>
+            </Form.Field>
+          </Form>
         </main>
       </>
     );
