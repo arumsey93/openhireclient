@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Icon, Image, Grid } from 'semantic-ui-react';
 import image from "../../images/Open.HIRE Logo.png"
 
-const Profile = props => {
+const Job = props => {
 
 
     return (
@@ -12,10 +12,10 @@ const Profile = props => {
                 <Image src={image} wrapped ui={false} />
                     <Card.Content>
                         <Card.Header style={{display: "flex", justifyContent: "center"}}>
-                            {props.profile.user.first_name} {props.profile.user.last_name}
+                            {props.job.title}
                         </Card.Header>
                         <Card.Description style={{display: "flex", justifyContent: "center"}}>
-                            {props.profile.city}, {props.profile.state}
+                            {props.job.city}, {props.job.state}
                         </Card.Description>
                         <Card.Content extra style={{display: "flex", justifyContent: "center", paddingTop: "15px"}}>
                             <a href={`mailto: ${props.profile.user.email}`} rel="noopener noreferrer" target="_blank">
@@ -44,4 +44,4 @@ const Profile = props => {
     )
 }
 
-export default Profile
+export default Job

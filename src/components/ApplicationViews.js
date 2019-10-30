@@ -7,17 +7,25 @@ import Register from "./auth/Register"
 import Login from "./auth/Login"
 import Home from "./home/Home"
 import CreateProfile from "./home/createProfileForm"
+import ProfileDetails from "./home/ProfileDetails"
+import EditProfile from "./home/EditProfileForm"
 
 const ApplicationViews = () => {
     const { isAuthenticated } = useSimpleAuth();
     const [profiles, setProfiles] = useState([]);
+    const [jobs, setJobs] = useState([]);
 
     const getProfiles = () => {
         APImanager.getAll("profiles").then(setProfiles);
     };
 
+    const getJobs = () => {
+        APImanager.getAll("jobs").then(setJobs)
+    };
+
     useEffect (() => {
         getProfiles();
+        getJobs();
     }, [])
 
 
@@ -25,7 +33,7 @@ const ApplicationViews = () => {
         <React.Fragment>
             <Route
                 exact path="/" render={props => {
-                    return <Home {...props} profiles={profiles} />
+                    return <Home {...props} profiles={profiles} jobs={jobs} />
                 }}
             />
             <Route
@@ -47,6 +55,28 @@ const ApplicationViews = () => {
                     else return <Redirect to="/login" />
                 }}
             />
+            <Route
+                path="/profile" render={props => {
+                    if (isAuthenticated()) {
+                        return <ProfileDetails {...props} getProfiles = {getProfiles} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                }}
+            />
+            <Route
+                exact path="/profiles/edit" render={props => {
+                    if(isAuthenticated()) return (
+                       <EditProfile {...props} getProfiles = {getProfiles} profiles={profiles} />
+                    )
+                    else return <Redirect to="/profile" />
+                }}
+            />
+            {/* <Route
+                path="/jobs" render={props => {
+                    return <Jobs {...props} getJobs = {getJobs} jobs = {jobs} />
+                }}
+            /> */}
         </React.Fragment>
     )
 }
