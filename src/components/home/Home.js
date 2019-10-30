@@ -5,6 +5,7 @@ import { Card, Grid, Header, } from 'semantic-ui-react'
 
 const Home = props => {
     const [profiles, setProfiles] = useState([]);
+    const [jobs, setJobs] = useState([]);
 
     const useGetLast15 = () => {
          fetch("http://localhost:8000/profiles?quantity=15", {
@@ -15,8 +16,19 @@ const Home = props => {
               setProfiles(profile);
             })
         };
+
+    const last15Job = () => {
+        fetch("http:localhost:8000/jobs?quantity=15", {
+            method: "GET",
+        })
+        .then(response => response.json())
+        .then(job => {
+            setJobs(job)
+        })
+    }
     
-      useEffect(useGetLast15, []);
+    useEffect(useGetLast15, []);
+    useEffect(last15Job, []);
 
     return (
         <>
@@ -53,7 +65,7 @@ const Home = props => {
                     </Grid.Row>
                 </Grid>
                 <Card.Group itemsPerRow={3} style={{display: "flex", justifyContent: "center"}}>
-                    {props.jobs.map(job => (
+                    {jobs.map(job => (
                         job.title && job.description && job.city && job.state && job.application ?
                             <Job
                             key={job.id}

@@ -36,6 +36,7 @@ const ProfileDetails = props => {
     useEffect(() => {
         getOneProfile();
     }, []);
+    
     return (
         <>
         <Grid centered style={{paddingTop: '25px'}}>
