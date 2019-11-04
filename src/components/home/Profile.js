@@ -18,6 +18,9 @@ const Profile = props => {
                         <Card.Description style={{display: "flex", justifyContent: "center"}}>
                             {props.profile.city}, {props.profile.state}
                         </Card.Description>
+                        <Card.Description style={{display: "flex", justifyContent: "center"}}>
+                            Proficient in: {props.profile.techOne}, {props.profile.techTwo}, and {props.profile.techThree}
+                        </Card.Description>
                         <Card.Content extra style={{display: "flex", justifyContent: "center", paddingTop: "15px"}}>
                             <a href={`mailto: ${props.profile.user.email}`} rel="noopener noreferrer" target="_blank">
                                 <Icon name='envelope open outline'></Icon>
