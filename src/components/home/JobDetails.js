@@ -69,7 +69,7 @@ const JobDetails = props => {
                                                     <Grid>
                                                         <Grid.Row centered>
                                                             <Grid.Column width={4} style={{paddingTop: '7px'}}>
-                                                                <Link to="/profiles/edit">Edit</Link>
+                                                                <Link to={`/jobs/${job.id}`}>Edit</Link>
                                                             </Grid.Column>
                                                             <Grid.Column width={4}>
                                                                 <Button onClick={() => {

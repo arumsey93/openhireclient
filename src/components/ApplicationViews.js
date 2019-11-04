@@ -12,17 +12,24 @@ import ProfileDetails from "./home/ProfileDetails"
 import EditProfile from "./home/EditProfileForm"
 import AllJobs from "./home/DisplayAllJobs"
 import JobDetails from "./home/JobDetails";
+import EditJobs from "./home/EditJob"
 
 const ApplicationViews = () => {
     const { isAuthenticated } = useSimpleAuth();
     const [profiles, setProfiles] = useState([]);
+    const [jobs, setJobs] =useState([]);
 
     const getProfiles = () => {
         APImanager.getAll("profiles").then(setProfiles);
     };
 
+    const getJobs = () => {
+        APImanager.getAll("profiles").then(setJobs);
+    }
+
     useEffect (() => {
         getProfiles();
+        getJobs();
     }, [])
 
 
@@ -86,6 +93,14 @@ const ApplicationViews = () => {
                 exact path="/jobs/yourjobs" render={props => {
                     if(isAuthenticated()) return (
                         <JobDetails {...props} />
+                    )
+                    else return <Redirect to="/login" />
+                }}
+            />
+            <Route
+                exact path="/jobs/:jobsId(\d+)" render={props => {
+                    if(isAuthenticated()) return (
+                        <EditJobs {...props} />
                     )
                     else return <Redirect to="/login" />
                 }}
