@@ -12,6 +12,9 @@ const EditProfile = props => {
   const resume = useRef();
   const portfolio = useRef();
   const codingchallenge = useRef();
+  const techOne = useRef();
+  const techTwo = useRef();
+  const techThree = useRef();
   const firstName = useRef();
   const lastName = useRef();
 
@@ -46,7 +49,10 @@ const EditProfile = props => {
       github: github.current.value,
       resume: resume.current.value,
       portfolio: portfolio.current.value,
-      codingchallenge: codingchallenge.current.value
+      codingchallenge: codingchallenge.current.value,
+      techOne: techOne.current.value,
+      techTwo: techTwo.current.value,
+      techThree: techThree.current.value
     };
 
 
@@ -170,6 +176,39 @@ const EditProfile = props => {
                 name="codingchallenge"
                 className="form-control"
                 defaultValue={profileEdit.codingchallenge}
+                required
+              />
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputTechOne"> Programming Language </Label>
+              <input
+                ref={techOne}
+                type="text"
+                name="techOne"
+                className="form-control"
+                defaultValue={profileEdit.techOne}
+                required
+              />
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputTechTwo"> Programming Language </Label>
+              <input
+                ref={techTwo}
+                type="text"
+                name="techTwo"
+                className="form-control"
+                defaultValue={profileEdit.techTwo}
+                required
+              />
+            </Form.Field>
+            <Form.Field>
+              <Label htmlFor="inputTechThree"> Programming Language </Label>
+              <input
+                ref={techThree}
+                type="text"
+                name="techThree"
+                className="form-control"
+                defaultValue={profileEdit.techThree}
                 required
               />
             </Form.Field>
