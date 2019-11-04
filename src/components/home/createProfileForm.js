@@ -4,7 +4,7 @@ import { Form, Label, Grid, Header, Button } from "semantic-ui-react"
 
 const CreateProfile = props => {
 
-  const [profileEdit, setEditFields] = useState ([])
+  const [profileEdit, setEditFields] = useState ({user: {}})
   const city = useRef();
   const state = useRef();
   const linkedin = useRef();
@@ -15,12 +15,20 @@ const CreateProfile = props => {
   const firstName = useRef();
   const lastName = useRef();
 
-      // this function gets all profile information so it can be displayed in the input fields
-      const getProfiles = () => {
-        APIManager.get("profiles", localStorage.getItem("user_id")).then(profile => {
-            setEditFields(profile);
-        });
-      }
+    const getCurrentProfile = () => {
+      fetch(`http://localhost:8000/profiles/current_profile`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Authorization": `Token ${localStorage.getItem("openhire_token")}`
+        }
+      })
+      .then(response => {
+        return response.json()
+      })
+      .then((response) => { return setEditFields(response)})
+    }
 
   //function that updates the profile object in the DB
   //this is called on submit edit button
@@ -42,13 +50,15 @@ const CreateProfile = props => {
     };
 
 
-    //HTTP request from APIManager to update the customer object in DB
+    // HTTP request from APIManager to update the profile object in DB
     APIManager.put("profiles", updatedUser).then(() => {
       props.history.push("/profile")
-    })};
+    }
+    )};
+  
 
     useEffect(() => {
-      getProfiles();
+      getCurrentProfile();
     }, []);
 
     //Edit form that user will use to fill out new information
@@ -62,7 +72,6 @@ const CreateProfile = props => {
                 </Header>
             </Grid>
             {
-            profileEdit.id == localStorage.getItem("user_id") ? 
             <>
             <div>
             <Form.Field>
@@ -169,7 +178,7 @@ const CreateProfile = props => {
               <Button type="submit">Submit Profile</Button>
             </Form.Field>
             </>
-            : "" }
+          }
           </Form>
         </main>
       </>

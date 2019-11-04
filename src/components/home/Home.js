@@ -18,7 +18,7 @@ const Home = props => {
         };
 
     const last15Job = () => {
-        fetch("http:localhost:8000/jobs?quantity=15", {
+        fetch("http://localhost:8000/jobs?quantity=15", {
             method: "GET",
         })
         .then(response => response.json())
@@ -70,7 +70,8 @@ const Home = props => {
                             <Job
                             key={job.id}
                             job={job}
-                            />: ""
+                            />
+                            : ""
                             ))}
                 </Card.Group>
             </section>

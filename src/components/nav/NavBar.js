@@ -31,8 +31,11 @@ const NavBar = props => {
                     <Dropdown.Item as={Link} to="/jobs">
                         Search Jobs
                     </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/postJob">
+                    <Dropdown.Item as={Link} to="/jobs/create">
                         Post a Job
+                    </Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/jobs/yourjobs">
+                        View Your Jobs
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>

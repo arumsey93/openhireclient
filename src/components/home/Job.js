@@ -1,11 +1,12 @@
 import React from "react";
-import { Card, Icon, Image, Grid } from 'semantic-ui-react';
+import { Card, Icon, Grid } from 'semantic-ui-react';
 
 const Job = props => {
 
 
     return (
         <>
+        <Grid.Row>
             <Grid.Column style={{padding: '40px'}}>
                 <Card>
                     <Card.Content>
@@ -18,14 +19,15 @@ const Job = props => {
                         <Card.Content extra style={{display: "flex", justifyContent: "center", paddingTop: "15px"}}>
                             {props.job.description}
                         </Card.Content>
-                        <Card.Content>
+                        <Card.Content style={{display: 'flex', justifyContent: 'center', paddingTop: '10px'}}>
                             <a href={`${props.job.application}`} rel="noopener noreferrer" target="_blank">
                                 <Icon name='briefcase'></Icon>
-                            </a> */}
+                            </a>
                         </Card.Content>
                     </Card.Content>
                 </Card>
             </Grid.Column>
+        </Grid.Row>
         </>
     )
 }
