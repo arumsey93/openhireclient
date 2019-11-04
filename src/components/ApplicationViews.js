@@ -7,25 +7,22 @@ import Register from "./auth/Register"
 import Login from "./auth/Login"
 import Home from "./home/Home"
 import CreateProfile from "./home/createProfileForm"
+import CreateJob from "./home/CreateJobForm"
 import ProfileDetails from "./home/ProfileDetails"
 import EditProfile from "./home/EditProfileForm"
+import AllJobs from "./home/DisplayAllJobs"
+import JobDetails from "./home/JobDetails";
 
 const ApplicationViews = () => {
     const { isAuthenticated } = useSimpleAuth();
     const [profiles, setProfiles] = useState([]);
-    const [jobs, setJobs] = useState([]);
 
     const getProfiles = () => {
         APImanager.getAll("profiles").then(setProfiles);
     };
 
-    const getJobs = () => {
-        APImanager.getAll("jobs").then(setJobs)
-    };
-
     useEffect (() => {
         getProfiles();
-        getJobs();
     }, [])
 
 
@@ -33,7 +30,7 @@ const ApplicationViews = () => {
         <React.Fragment>
             <Route
                 exact path="/" render={props => {
-                    return <Home {...props} profiles={profiles} jobs={jobs} />
+                    return <Home {...props} profiles={profiles} />
                 }}
             />
             <Route
@@ -56,6 +53,14 @@ const ApplicationViews = () => {
                 }}
             />
             <Route
+                exact path="/jobs/create" render={props => {
+                    if(isAuthenticated()) return (
+                       <CreateJob {...props} />
+                    )
+                    else return <Redirect to="/login" />
+                }}
+            />
+            <Route
                 path="/profile" render={props => {
                     if (isAuthenticated()) {
                         return <ProfileDetails {...props} getProfiles = {getProfiles} />
@@ -72,11 +77,19 @@ const ApplicationViews = () => {
                     else return <Redirect to="/profile" />
                 }}
             />
-            {/* <Route
-                path="/jobs" render={props => {
-                    return <Jobs {...props} getJobs = {getJobs} jobs = {jobs} />
+            <Route
+                exact path="/jobs" render={props => {
+                    return <AllJobs {...props} />
                 }}
-            /> */}
+            />
+            <Route
+                exact path="/jobs/yourjobs" render={props => {
+                    if(isAuthenticated()) return (
+                        <JobDetails {...props} />
+                    )
+                    else return <Redirect to="/login" />
+                }}
+            />
         </React.Fragment>
     )
 }

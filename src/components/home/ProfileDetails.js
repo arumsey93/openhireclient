@@ -10,7 +10,7 @@ const ProfileDetails = props => {
     const { isAuthenticated } = useSimpleAuth();
 
     const getOneProfile = () => {
-        fetch(`http://localhost:8000/profiles/${localStorage.getItem("user_id")}`, {
+        fetch(`http://localhost:8000/profiles/current_profile`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",

@@ -7,6 +7,7 @@ const Profile = props => {
 
     return (
         <>
+        <Grid.Row>
             <Grid.Column  style={{padding: '40px'}}>
                 <Card>
                 <Image src={image} wrapped ui={false} />
@@ -40,6 +41,7 @@ const Profile = props => {
                     </Card.Content>
                 </Card>
             </Grid.Column>
+            </Grid.Row>
         </>
     )
 }

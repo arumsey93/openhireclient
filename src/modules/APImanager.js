@@ -45,7 +45,8 @@ export default {
         return fetch(`${remoteURL}/${resource}/${resourceObject.id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Token ${localStorage.getItem("openhire_token")}`
             },
             body: JSON.stringify(resourceObject)
         })

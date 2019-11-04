@@ -4,7 +4,7 @@ import { Form, Label, Grid, Header, Button } from "semantic-ui-react"
 
 const EditProfile = props => {
 
-  const [profileEdit, setEditFields] = useState ([])
+  const [profileEdit, setEditFields] = useState ({user: {}})
   const city = useRef();
   const state = useRef();
   const linkedin = useRef();
@@ -15,12 +15,20 @@ const EditProfile = props => {
   const firstName = useRef();
   const lastName = useRef();
 
-      // this function gets all profile information so it can be displayed in the input fields
-      const getProfiles = () => {
-        APIManager.getAll("profiles").then(profile => {
-            setEditFields(profile);
-        });
-      }
+    const getCurrentProfile = () => {
+      fetch(`http://localhost:8000/profiles/current_profile`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Authorization": `Token ${localStorage.getItem("openhire_token")}`
+        }
+      })
+      .then(response => {
+        return response.json()
+      })
+      .then((response) => { return setEditFields(response)})
+    }
 
   //function that updates the profile object in the DB
   //this is called on submit edit button
@@ -28,27 +36,29 @@ const EditProfile = props => {
     e.preventDefault();
 
     const updatedUser = {
-        id: localStorage.getItem("user_id"),
-        user_id: localStorage.getItem("user_id"),
-        first_name: firstName.current.value,
-        last_name: lastName.current.value,
-        city: city.current.value,
-        state: state.current.value,
-        linkedin: linkedin.current.value,
-        github: github.current.value,
-        resume: resume.current.value,
-        portfolio: portfolio.current.value,
-        codingchallenge: codingchallenge.current.value
+      id: localStorage.getItem("user_id"),
+      user_id: localStorage.getItem("user_id"),
+      first_name: firstName.current.value,
+      last_name: lastName.current.value,
+      city: city.current.value,
+      state: state.current.value,
+      linkedin: linkedin.current.value,
+      github: github.current.value,
+      resume: resume.current.value,
+      portfolio: portfolio.current.value,
+      codingchallenge: codingchallenge.current.value
     };
 
 
-    //HTTP request from APIManager to update the customer object in DB
+    // HTTP request from APIManager to update the profile object in DB
     APIManager.put("profiles", updatedUser).then(() => {
       props.history.push("/profile")
-    })};
+    }
+    )};
+  
 
     useEffect(() => {
-      getProfiles();
+      getCurrentProfile();
     }, []);
 
     //Edit form that user will use to fill out new information
@@ -61,10 +71,9 @@ const EditProfile = props => {
                 <u><strong style={{color: 'orange'}}>Edit</strong> Your Profile</u>
                 </Header>
             </Grid>
-            {profileEdit.map(profile => {
-            if (profile.id == localStorage.getItem("user_id")) {
-            return (
-              <div key={profile.id}>
+            {
+            <>
+            <div>
             <Form.Field>
               <Label htmlFor="inputFirstName"> First Name </Label>
               <input
@@ -72,7 +81,7 @@ const EditProfile = props => {
                 type="text"
                 name="firstName"
                 className="form-control"
-                defaultValue={profile.user.first_name}
+                defaultValue={profileEdit.user.first_name}
                 required
               />
             </Form.Field>
@@ -83,7 +92,7 @@ const EditProfile = props => {
                 type="text"
                 name="lastName"
                 className="form-control"
-                defaultValue={profile.user.last_name}
+                defaultValue={profileEdit.user.last_name}
                 required
               />
             </Form.Field>
@@ -94,7 +103,7 @@ const EditProfile = props => {
                 type="text"
                 name="city"
                 className="form-control"
-                defaultValue={profile.city}
+                defaultValue={profileEdit.city}
                 required
               />
             </Form.Field>
@@ -105,7 +114,7 @@ const EditProfile = props => {
                 type="text"
                 name="state"
                 className="form-control"
-                defaultValue={profile.state}
+                defaultValue={profileEdit.state}
                 required
               />
             </Form.Field>
@@ -116,7 +125,7 @@ const EditProfile = props => {
                 type="text"
                 name="linkedin"
                 className="form-control"
-                defaultValue={profile.linkedin}
+                defaultValue={profileEdit.linkedin}
                 required
               />
             </Form.Field>
@@ -127,7 +136,7 @@ const EditProfile = props => {
                 type="text"
                 name="github"
                 className="form-control"
-                defaultValue={profile.github}
+                defaultValue={profileEdit.github}
                 required
               />
             </Form.Field>
@@ -138,7 +147,7 @@ const EditProfile = props => {
                 type="text"
                 name="resume"
                 className="form-control"
-                defaultValue={profile.resume}
+                defaultValue={profileEdit.resume}
                 required
               />
             </Form.Field>
@@ -149,7 +158,7 @@ const EditProfile = props => {
                 type="text"
                 name="portfolio"
                 className="form-control"
-                defaultValue={profile.portfolio}
+                defaultValue={profileEdit.portfolio}
                 required
               />
             </Form.Field>
@@ -160,17 +169,17 @@ const EditProfile = props => {
                 type="text"
                 name="codingchallenge"
                 className="form-control"
-                defaultValue={profile.codingchallenge}
+                defaultValue={profileEdit.codingchallenge}
                 required
               />
             </Form.Field>
             </div>
-              );
-            }
-          })}
             <Form.Field style={{display: 'flex', justifyContent: 'center', paddingTop: '15px'}}>
               <Button type="submit">Submit Profile</Button>
             </Form.Field>
+            </>
+            // : "" 
+          }
           </Form>
         </main>
       </>
