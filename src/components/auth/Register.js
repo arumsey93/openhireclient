@@ -40,7 +40,7 @@ const Register = props => {
     <main style={{ textAlign: "center" }}>
       <Form className="form--login" onSubmit={handleRegister}>
         <Grid centered>
-          <Header as='h1' style={{paddingBottom: '25px'}}>Register an Account</Header>
+          <Header as='h1' style={{paddingBottom: '25px'}}>Register an<strong style={{color: 'orange'}}> Account</strong></Header>
         </Grid>
         <Form.Field>
           <Label htmlFor="userName"> Username </Label>

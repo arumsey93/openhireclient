@@ -36,7 +36,7 @@ const Login = props => {
     return (
         <main style={{textAlign:"center"}}>
             <Form className="form--login">
-                <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <h1 className="h3 mb-3 font-weight-normal">Log Into Your <strong style={{color: 'orange'}}>Account</strong></h1>
                 <Form.Field>
                     <Label htmlFor="username"> Username </Label>
                     <input ref={username} type="text"
