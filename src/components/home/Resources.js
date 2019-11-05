@@ -51,7 +51,7 @@ const Resources = props => {
                         <List.Item><a href='https://www.youtube.com/watch?v=bhwEsfXS6y8' rel="noopener noreferrer" target="_blank">https://www.youtube.com/watch?v=bhwEsfXS6y8</a></List.Item>
                     </List>
                 </Grid>
-                <Grid style={{paddingLeft: '50px', paddingTop: '15px'}}>
+                <Grid style={{paddingLeft: '50px', paddingTop: '15px', paddingBottom: '50px'}}>
                     <Grid.Row>
                         <Header as='h1'>LinkedIn:</Header>
                     </Grid.Row>

@@ -143,7 +143,7 @@ const Register = props => {
             required
           />
         </Form.Field>
-        <Form.Field style={{display: 'flex', justifyContent: 'center'}}>
+        <Form.Field style={{display: 'flex', justifyContent: 'center', paddingBottom: '50px'}}>
           <Button type="submit">Sign in</Button>
         </Form.Field>
       </Form>

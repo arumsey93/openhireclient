@@ -48,7 +48,7 @@ const Home = props => {
                         <Header as='h1' style={{fontSize: '35px'}}>Search for <strong style={{color: 'orange'}}>Talent</strong></Header>
                     </Grid.Row>
                 </Grid>
-                <Card.Group itemsPerRow={3} style={{display: "flex", justifyContent: "center"}}>
+                <Card.Group itemsPerRow={3} style={{display: "flex"}}>
                     {profiles.map(profile => (
                         profile.linkedin && profile.github && profile.resume && profile.portfolio ?
                             <Profile
@@ -64,7 +64,7 @@ const Home = props => {
                         <Header as='h1' style={{fontSize: '35px'}}>Search for <strong style={{color: 'orange'}}>Jobs</strong></Header>
                     </Grid.Row>
                 </Grid>
-                <Card.Group itemsPerRow={3} style={{display: "flex", justifyContent: "center"}}>
+                <Card.Group itemsPerRow={3} style={{display: "flex"}}>
                     {jobs.map(job => (
                         job.title && job.description && job.city && job.state && job.application ?
                             <Job
