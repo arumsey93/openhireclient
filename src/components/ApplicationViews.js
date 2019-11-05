@@ -19,19 +19,13 @@ import Resources from "./home/Resources";
 const ApplicationViews = () => {
     const { isAuthenticated } = useSimpleAuth();
     const [profiles, setProfiles] = useState([]);
-    const [jobs, setJobs] = useState([]);
 
     const getProfiles = () => {
         APImanager.getAll("profiles").then(setProfiles);
     };
 
-    const getJobs = () => {
-        APImanager.getAll("profiles").then(setJobs);
-    }
-
     useEffect (() => {
         getProfiles();
-        getJobs();
     }, [])
 
 

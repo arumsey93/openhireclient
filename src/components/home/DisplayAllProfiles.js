@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Card, Grid, Header, Label, Button, Input } from 'semantic-ui-react';
+import { Card, Grid, Header, Label, Button } from 'semantic-ui-react';
 import Profile from "./Profile";
 
 const AllProfiles = props => {
@@ -67,7 +67,6 @@ const AllProfiles = props => {
 
     useEffect(getProfiles, []);
 
-    console.log(search_city)
     return (
         <>
             <section style={{paddingTop: '25px'}}>
