@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Job from "./Job"
-import { Card, Grid, Header, } from 'semantic-ui-react';
+import { Card, Grid, Header, Label, Button,  } from 'semantic-ui-react';
 
 const AllJobs = props => {
     const [jobs, setJobs] = useState([]);
+    const search_city = useRef();
+    const search_state = useRef();
 
     const getJobs = () => {
         fetch("http://localhost:8000/jobs", {
@@ -15,6 +17,38 @@ const AllJobs = props => {
         })
     }
 
+    const fetchCity = () => {
+        let search = search_city.current.value
+
+        fetch(`http://localhost:8000/jobs?city=${search}`, {
+
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            }
+        })
+            .then(response => response.json())
+            .then((response) =>
+            setJobs(response))
+    }
+
+    const fetchState = () => {
+        let search = search_state.current.value
+
+        fetch(`http://localhost:8000/jobs?state=${search}`, {
+
+            "method": "GET",
+            "headers": {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            }
+        })
+            .then(response => response.json())
+            .then((response) =>
+            setJobs(response))
+    }
+
     useEffect(getJobs, []);
 
     return (
@@ -23,6 +57,17 @@ const AllJobs = props => {
                 <Grid centered rows="1">
                     <Grid.Row>
                         <Header as='h1' style={{fontSize: '35px'}}>Search for <strong style={{color: 'orange'}}>Jobs</strong></Header>
+                    </Grid.Row>
+                </Grid>
+                <Grid centered>
+                    <Grid.Row>
+                        <Label htmlFor="search_items">Search by City</Label>
+                            <input type="search" id="search_input"  ref={search_city} placeholder="City"/>
+                            <Button id="search_input" onClick={() =>{fetchCity()}}>Search</Button>
+                        <Label htmlFor="search_items">Search by State</Label>
+                            <input type="search" id="search_input"  ref={search_state} placeholder="State"/>
+                            <Button id="search_input" onClick={() =>{fetchState()}}>Search</Button>
+                            <Button id="reset" onClick = {() => {getJobs()}}>Reset</Button>
                     </Grid.Row>
                 </Grid>
                 <Card.Group itemsPerRow={3} style={{display: "flex", justifyContent: "center"}}>

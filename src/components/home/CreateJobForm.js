@@ -31,7 +31,7 @@ const CreateJob = props => {
     //Post form that user will use to fill out new information
     return (
         <>
-        <main style={{ textAlign: "center" }}>
+        <main style={{ textAlign: "center"}}>
           <Form className="form--login" onSubmit={handleUpdate}>
             <Grid centered>
                 <Header as='h1' style={{paddingBottom: '35px', fontSize: '50px'}}>

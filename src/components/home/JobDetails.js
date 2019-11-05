@@ -90,7 +90,7 @@ const JobDetails = props => {
             </Grid.Row>
         </Grid>
         <Grid style={{display: 'flex', justifyContent: 'center'}}>
-            <Link style={{fontSize: '25px', paddingTop: '25px'}} to="/jobs/create">Please Create a Job</Link>
+            <Link style={{fontSize: '25px', paddingTop: '25px'}} to="/jobs/create">Post a Job</Link>
         </Grid>
         </>
     )

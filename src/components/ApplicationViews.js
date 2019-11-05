@@ -13,11 +13,13 @@ import EditProfile from "./home/EditProfileForm"
 import AllJobs from "./home/DisplayAllJobs"
 import JobDetails from "./home/JobDetails";
 import EditJobs from "./home/EditJob"
+import AllProfiles from "./home/DisplayAllProfiles";
+import Resources from "./home/Resources";
 
 const ApplicationViews = () => {
     const { isAuthenticated } = useSimpleAuth();
     const [profiles, setProfiles] = useState([]);
-    const [jobs, setJobs] =useState([]);
+    const [jobs, setJobs] = useState([]);
 
     const getProfiles = () => {
         APImanager.getAll("profiles").then(setProfiles);
@@ -90,6 +92,11 @@ const ApplicationViews = () => {
                 }}
             />
             <Route
+                exact path="/profiles" render={props => {
+                    return <AllProfiles {...props} />
+                }}
+            />
+            <Route
                 exact path="/jobs/yourjobs" render={props => {
                     if(isAuthenticated()) return (
                         <JobDetails {...props} />
@@ -103,6 +110,11 @@ const ApplicationViews = () => {
                         <EditJobs {...props} />
                     )
                     else return <Redirect to="/login" />
+                }}
+            />
+            <Route
+                exact path="/resources" render={props => {
+                    return <Resources {...props} />
                 }}
             />
         </React.Fragment>
