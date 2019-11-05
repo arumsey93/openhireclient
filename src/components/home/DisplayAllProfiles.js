@@ -90,7 +90,7 @@ const AllProfiles = props => {
                             <Button id="reset" onClick = {() => {getProfiles()}}>Reset</Button>
                     </Grid.Row>
                 </Grid>
-                <Card.Group itemsPerRow={3} style={{display: "flex", justifyContent: "center"}}>
+                <Card.Group itemsPerRow={3} style={{display: "flex"}}>
                     {profiles.map(profile => (
                         profile.linkedin && profile.github && profile.resume && profile.portfolio ?                            
                         <Profile

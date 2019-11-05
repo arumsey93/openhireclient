@@ -79,7 +79,7 @@ const EditJob = props => {
               </Form.Field>
               <Form.Field>
                 <Label htmlFor="inputDescription"> Job Description </Label>
-                <input
+                <textarea
                   ref={description}
                   type="text"
                   name="description"
