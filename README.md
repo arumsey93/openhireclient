@@ -32,4 +32,4 @@ Then you should be able to run npm and peruse the site!
 
 ## Authors
 
-* Alex Rumsey
+* [Alex Rumsey](https://www.linkedin.com/in/arumsey/)
