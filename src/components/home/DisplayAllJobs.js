@@ -72,7 +72,7 @@ const AllJobs = props => {
                             <Button id="reset" onClick = {() => {getJobs()}}>Reset</Button>
                     </Grid.Row>
                 </Grid>
-                <Card.Group itemsPerRow={3} style={{display: "flex", paddingRight: '15px', paddingLeft: '15px'}}>
+                <Card.Group itemsPerRow={4} style={{display: "flex", paddingRight: '15px', paddingLeft: '15px'}}>
                     {jobs.map(job => (
                         job.title && job.description && job.city && job.state && job.application ?
                             <Job

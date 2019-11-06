@@ -16,14 +16,16 @@ const Job = props => {
                     <Card.Description style={{display: "flex", justifyContent: "center"}}>
                         {props.job.city}, {props.job.state}
                     </Card.Description>
-                    <Card.Content extra style={{display: "flex", justifyContent: "center", paddingTop: "15px"}}>
+                    <Card.Content style={{display: "flex", justifyContent: "center", paddingTop: "15px"}}>
                         {props.job.description}
                     </Card.Content>
-                    <Card.Content style={{display: 'flex', justifyContent: 'center', paddingTop: '10px'}}>
+                    <div style={{display: 'flex', justifyContent: 'center', paddingTop: '15px'}}>
+                    <Card.Content extra style={{position: 'absolute', bottom: '10px'}}>
                         <a href={`${props.job.application}`} rel="noopener noreferrer" target="_blank">
                             <Icon name='briefcase'></Icon>
                         </a>
                     </Card.Content>
+                    </div>
                 </Card.Content>
             </Card>
         </>
