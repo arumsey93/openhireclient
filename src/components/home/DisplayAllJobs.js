@@ -55,14 +55,14 @@ const AllJobs = props => {
 
     return (
         <>
-            <section style={{paddingTop: '25px'}}>
+            <section style={{paddingTop: '25px', paddingBottom: '40px'}}>
                 <Grid centered rows="1">
                     <Grid.Row>
                         <Header as='h1' style={{fontSize: '35px'}}>Search for <strong style={{color: 'orange'}}>Jobs</strong></Header>
                     </Grid.Row>
                 </Grid>
                 <Grid centered>
-                    <Grid.Row>
+                    <Grid.Row style={{paddingBottom: '50px'}}>
                         <Label htmlFor="search_items">Search by City</Label>
                             <input type="search" id="search_input"  ref={search_city} placeholder="City"/>
                             <Button id="search_input" onClick={() =>{fetchCity()}}>Search</Button>
