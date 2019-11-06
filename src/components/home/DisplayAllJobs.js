@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Job from "./Job"
 import { Card, Grid, Header, Label, Button,  } from 'semantic-ui-react';
 
+// Allows the user to display all jobs posted by all users without authentication, allows them to filter through their search by city and state.  Uses GET.
+
 const AllJobs = props => {
     const [jobs, setJobs] = useState([]);
     const search_city = useRef();

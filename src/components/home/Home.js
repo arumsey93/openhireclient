@@ -3,6 +3,8 @@ import Profile from "./Profile";
 import Job from "./Job"
 import { Card, Grid, Header, } from 'semantic-ui-react'
 
+// Displays all jobs and profiles created by users to be viewed by anyone without authentication
+
 const Home = props => {
     const [profiles, setProfiles] = useState([]);
     const [jobs, setJobs] = useState([]);

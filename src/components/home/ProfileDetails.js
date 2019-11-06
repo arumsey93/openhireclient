@@ -4,6 +4,8 @@ import { Card, Icon, Image, Grid, Header, Button } from 'semantic-ui-react';
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 import image from "../../images/Open.HIRE Logo.png";
 
+// Allows users to view their personal profile through a custom action of current_profile, can click the edit link to be taken to edit form, or delete their profile.  Uses GET, DELETE.
+
 
 const ProfileDetails = props => {
     const [oneProfile, setOneProfile] = useState({user: {}});

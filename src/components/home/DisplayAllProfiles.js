@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { Card, Grid, Header, Label, Button } from 'semantic-ui-react';
 import Profile from "./Profile";
 
+// Allows the user to display all profiles posted by all users without authentication, allows them to filter through their search by city, state, and tech stack.  Uses GET.
+
+
 const AllProfiles = props => {
     const [profiles, setProfiles] = useState([]);
     const search_city = useRef();

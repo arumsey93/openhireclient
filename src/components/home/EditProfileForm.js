@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import APIManager from "../../modules/APImanager"
 import { Form, Label, Grid, Header, Button } from "semantic-ui-react"
 
+// User can edit their profile using the GET, PUT methods after filling out this form and pressing submit
+
 const EditProfile = props => {
 
   const [profileEdit, setEditFields] = useState ({user: {}})

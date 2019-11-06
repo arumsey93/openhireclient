@@ -1,6 +1,8 @@
 import React from "react";
 import { Grid, Header, List } from 'semantic-ui-react';
 
+// Simple list of resources for job interviewers to use in order to gain further insight into how to ace an interview process.
+
 
 const Resources = props => {
     return (

@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, Icon } from 'semantic-ui-react';
 
+// Card for a job, displays the title, city, state, description, and application link inside of an icon.
+
 const Job = props => {
 
 

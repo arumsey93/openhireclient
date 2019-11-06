@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import APIManager from "../../modules/APImanager"
 import { Form, Label, Grid, Header, Button } from "semantic-ui-react"
 
+// Allows user to create a new job posting in the DB through a form.  Uses POST.
+
 const CreateJob = props => {
 
   const title = useRef();
@@ -11,7 +13,6 @@ const CreateJob = props => {
   const application = useRef();
 
   //function that updates the profile object in the DB
-  //this is called on submit edit button
   const handleUpdate = e => {
     e.preventDefault();
 
