@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import APIManager from "../../modules/APImanager"
 import { Form, Label, Grid, Header, Button } from "semantic-ui-react"
 
+// User can edit their job posting by matching the parameter of the Job ID to the selected Job ID.  Edited using a form and the GET, PUT methods.
+
 const EditJob = props => {
 
     const [jobEdit, setEditFields] = useState ([])
@@ -53,7 +55,7 @@ const EditJob = props => {
           getCurrentJob();
         }, []);
   
-      //Post form that user will use to fill out new information
+      //Edit form that user will use to fill out new information
       return (
           <>
           <main style={{ textAlign: "center" }}>

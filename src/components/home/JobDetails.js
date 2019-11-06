@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Card, Icon, Grid, Header, Button } from 'semantic-ui-react';
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth";
 
+// Fetches all jobs by user id, allows for delete by job id and authentication.  Uses GET, DELETE.
+
 const JobDetails = props => {
     const [job, setJobs] = useState([]);
     const { isAuthenticated } = useSimpleAuth();
@@ -49,7 +51,7 @@ const JobDetails = props => {
                                 <div key={job.id}>
                                     {job.title && job.description && job.city && job.state && job.application ?
                                         <Grid.Column style={{padding: '40px'}}>
-                                            <Card centered>
+                                            <Card>
                                                 <Card.Content>
                                                     <Card.Header style={{display: "flex", justifyContent: "center"}}>
                                                         {job.title}

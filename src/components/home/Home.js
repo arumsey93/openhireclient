@@ -3,6 +3,8 @@ import Profile from "./Profile";
 import Job from "./Job"
 import { Card, Grid, Header, } from 'semantic-ui-react'
 
+// Displays all jobs and profiles created by users to be viewed by anyone without authentication
+
 const Home = props => {
     const [profiles, setProfiles] = useState([]);
     const [jobs, setJobs] = useState([]);
@@ -58,13 +60,13 @@ const Home = props => {
                             ))}
                 </Card.Group>
             </section>
-            <section style={{paddingTop: '25px'}}>
+            <section style={{paddingTop: '25px', paddingBottom: '40px'}}>
             <Grid centered rows="1">
                     <Grid.Row>
-                        <Header as='h1' style={{fontSize: '35px'}}>Search for <strong style={{color: 'orange'}}>Jobs</strong></Header>
+                        <Header as='h1' style={{fontSize: '35px', paddingBottom: '25px'}}>Search for <strong style={{color: 'orange'}}>Jobs</strong></Header>
                     </Grid.Row>
                 </Grid>
-                <Card.Group itemsPerRow={3} style={{display: "flex"}}>
+                <Card.Group itemsPerRow={3} style={{display: "flex", paddingRight: '15px', paddingLeft: '15px'}}>
                     {jobs.map(job => (
                         job.title && job.description && job.city && job.state && job.application ?
                             <Job

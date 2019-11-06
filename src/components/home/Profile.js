@@ -2,6 +2,8 @@ import React from "react";
 import { Card, Icon, Image, Grid } from 'semantic-ui-react';
 import image from "../../images/Open.HIRE Logo.png"
 
+// Card for a profile, displays the Full Name, city, state, technologies, and links to their resources inside of icons.
+
 const Profile = props => {
 
 

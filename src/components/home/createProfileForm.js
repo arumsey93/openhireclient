@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import APIManager from "../../modules/APImanager"
 import { Form, Label, Grid, Header, Button } from "semantic-ui-react"
 
+// Allows a user to create a profile through an edit to their existing, but blank user profile.  Uses Get, PUT.
+
 const CreateProfile = props => {
 
   const [profileEdit, setEditFields] = useState ({user: {}})

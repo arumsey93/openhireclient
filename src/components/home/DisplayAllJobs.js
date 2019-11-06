@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Job from "./Job"
 import { Card, Grid, Header, Label, Button,  } from 'semantic-ui-react';
 
+// Allows the user to display all jobs posted by all users without authentication, allows them to filter through their search by city and state.  Uses GET.
+
 const AllJobs = props => {
     const [jobs, setJobs] = useState([]);
     const search_city = useRef();
@@ -70,7 +72,7 @@ const AllJobs = props => {
                             <Button id="reset" onClick = {() => {getJobs()}}>Reset</Button>
                     </Grid.Row>
                 </Grid>
-                <Card.Group itemsPerRow={3} style={{display: "flex"}}>
+                <Card.Group itemsPerRow={3} style={{display: "flex", paddingRight: '15px', paddingLeft: '15px'}}>
                     {jobs.map(job => (
                         job.title && job.description && job.city && job.state && job.application ?
                             <Job
