@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { Menu, Image, Dropdown } from "semantic-ui-react"
-import logo from "../../images/Open.HIRE New Logo.png"
+import logo from "../../images/Open.HIRE no text.png"
 import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
 import "./NavBar.css"
 

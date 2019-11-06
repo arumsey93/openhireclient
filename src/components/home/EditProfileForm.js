@@ -213,7 +213,7 @@ const EditProfile = props => {
               />
             </Form.Field>
             </div>
-            <Form.Field style={{display: 'flex', justifyContent: 'center', paddingTop: '15px'}}>
+            <Form.Field style={{display: 'flex', justifyContent: 'center', paddingTop: '15px', paddingBottom: '50px'}}>
               <Button type="submit">Submit Profile</Button>
             </Form.Field>
             </>

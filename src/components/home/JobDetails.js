@@ -49,7 +49,7 @@ const JobDetails = props => {
                                 <div key={job.id}>
                                     {job.title && job.description && job.city && job.state && job.application ?
                                         <Grid.Column style={{padding: '40px'}}>
-                                            <Card centered>
+                                            <Card>
                                                 <Card.Content>
                                                     <Card.Header style={{display: "flex", justifyContent: "center"}}>
                                                         {job.title}
