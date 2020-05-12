@@ -34,7 +34,6 @@ const Home = props => {
 
     return (
         <>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <Grid centered rows="1">
                 <Grid.Row>
                     <Header as='h1' style={{fontSize: '50px'}}><u>Open.<strong style={{color: 'orange'}}>HIRE</strong></u></Header>
