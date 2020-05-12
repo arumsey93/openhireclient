@@ -10,7 +10,7 @@ const JobDetails = props => {
     const { isAuthenticated } = useSimpleAuth();
 
     const getJobs = () => {
-        fetch(`http://localhost:8000/jobs?user=${localStorage.getItem("user_id")}`, {
+        fetch(`https://openhireapi.herokuapp.com/jobs?user=${localStorage.getItem("user_id")}`, {
             method:"GET",
             headers: {
                 "Accept": "application/json",
@@ -25,7 +25,7 @@ const JobDetails = props => {
     
     const deleteJob = id => {
         if (isAuthenticated()) {
-            fetch(`http://localhost:8000/jobs/${id}`, {
+            fetch(`https://openhireapi.herokuapp.com/jobs/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Token ${localStorage.getItem("openhire_token")}`

@@ -1,4 +1,4 @@
-const remoteURL = "http://localhost:8000"
+const remoteURL = "https://openhireapi.herokuapp.com/"
 
 export default {
     get(resource, id) {

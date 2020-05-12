@@ -12,7 +12,7 @@ const ProfileDetails = props => {
     const { isAuthenticated } = useSimpleAuth();
 
     const getOneProfile = () => {
-        fetch(`http://localhost:8000/profiles/current_profile`, {
+        fetch(`https://openhireapi.herokuapp.com/profiles/current_profile`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -26,7 +26,7 @@ const ProfileDetails = props => {
 
     const deleteMyProfile = () => {
         if (isAuthenticated()) {
-          fetch(`http://localhost:8000/profiles/${oneProfile.id}`, {
+          fetch(`https://openhireapi.herokuapp.com/profiles/${oneProfile.id}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("openhire_token")}`

@@ -14,7 +14,7 @@ const EditJob = props => {
     const application = useRef();
 
     const getCurrentJob = () => {
-        fetch(`http://localhost:8000/jobs/${props.match.params.jobsId}`, {
+        fetch(`https://openhireapi.herokuapp.com/jobs/${props.match.params.jobsId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

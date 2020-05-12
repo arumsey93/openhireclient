@@ -10,7 +10,7 @@ const AllJobs = props => {
     const search_state = useRef();
 
     const getJobs = () => {
-        fetch("http://localhost:8000/jobs", {
+        fetch("https://openhireapi.herokuapp.com/jobs", {
             method: "GET",
         })
         .then(response => response.json())
@@ -22,7 +22,7 @@ const AllJobs = props => {
     const fetchCity = () => {
         let search = search_city.current.value
 
-        fetch(`http://localhost:8000/jobs?city=${search}`, {
+        fetch(`https://openhireapi.herokuapp.com/jobs?city=${search}`, {
 
             "method": "GET",
             "headers": {
@@ -38,7 +38,7 @@ const AllJobs = props => {
     const fetchState = () => {
         let search = search_state.current.value
 
-        fetch(`http://localhost:8000/jobs?state=${search}`, {
+        fetch(`https://openhireapi.herokuapp.com/jobs?state=${search}`, {
 
             "method": "GET",
             "headers": {

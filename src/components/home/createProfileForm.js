@@ -21,7 +21,7 @@ const CreateProfile = props => {
   const lastName = useRef();
 
     const getCurrentProfile = () => {
-      fetch(`http://localhost:8000/profiles/current_profile`, {
+      fetch(`https://openhireapi.herokuapp.com/profiles/current_profile`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

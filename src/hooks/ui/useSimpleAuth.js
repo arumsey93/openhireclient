@@ -7,7 +7,7 @@ const useSimpleAuth = () => {
     loggedIn || localStorage.getItem("openhire_token") !== null;
 
   const register = userInfo => {
-    return fetch("http://127.0.0.1:8000/register", {
+    return fetch("https://openhireapi.herokuapp.com/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +26,7 @@ const useSimpleAuth = () => {
   };
 
   const login = credentials => {
-    return fetch("http://127.0.0.1:8000/login", {
+    return fetch("https://openhireapi.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

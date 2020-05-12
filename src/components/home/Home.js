@@ -10,7 +10,7 @@ const Home = props => {
     const [jobs, setJobs] = useState([]);
 
     const useGetLast15 = () => {
-         fetch("http://localhost:8000/profiles?quantity=15", {
+         fetch("https://openhireapi.herokuapp.com/profiles?quantity=15", {
             method: "GET",
             })
             .then(response => response.json())
@@ -20,7 +20,7 @@ const Home = props => {
         };
 
     const last15Job = () => {
-        fetch("http://localhost:8000/jobs?quantity=15", {
+        fetch("https://openhireapi.herokuapp.com/jobs?quantity=15", {
             method: "GET",
         })
         .then(response => response.json())
