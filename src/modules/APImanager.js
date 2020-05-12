@@ -1,4 +1,4 @@
-const remoteURL = "https://openhireapi.herokuapp.com/"
+const remoteURL = "https://openhireapi.herokuapp.com"
 
 export default {
     get(resource, id) {
